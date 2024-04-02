@@ -1,7 +1,7 @@
 import { Input, Label, Section, Main } from "@stylin.js/elements";
 import { useQuery } from "@tanstack/react-query";
 import { isValidSuiAddress } from "@mysten/sui.js/utils";
-import {       listCreatedLinks} from "@mysten/zksend";
+import { listCreatedLinks } from "@mysten/zksend";
 import { useState } from "react";
 
 import { Div } from "@stylin.js/elements";
@@ -15,15 +15,11 @@ const ZkSendList = () => {
     queryFn: () => {
       if (!isValidSuiAddress(address)) return null;
 
-      return listCreatedLinks(
-        {
-          address: address,
-        }
-      );
+      return listCreatedLinks({
+        address: address,
+      });
     },
   });
-
-  console.log({ isPending, error, data });
 
   return (
     <Main display="flex" flexDirection="column" gap="1rem">
@@ -66,6 +62,7 @@ const ZkSendList = () => {
           : data.links.map((link, index) => (
               <Div
                 key={index}
+                color="#000"
                 display="flex"
                 justifyContent="space-between"
                 borderTop={index && "1px solid"}
