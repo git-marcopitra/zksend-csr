@@ -12,12 +12,14 @@ const ZkSendList = () => {
     queryFn: () => {
       if (!isValidSuiAddress(address)) return null;
 
-      return listCreatedLinks({
-        address: address,
-      });
+      return listCreatedLinks(
+        {
+          address: address,
+        },
+        window.fetch.bind(window) // HERE IS THE IMPLEMENTATION
+      );
     },
   });
-
 
   console.log({ isPending, error, data });
 
@@ -48,7 +50,7 @@ const ZkSendList = () => {
         bg="white"
         gap="1rem"
         display="flex"
-        color={error ? '#900' : 'unset'}
+        color={error ? "#900" : "unset"}
         borderRadius="1rem"
         flexDirection="column"
       >
