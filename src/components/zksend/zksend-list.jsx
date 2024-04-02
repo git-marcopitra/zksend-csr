@@ -4,6 +4,8 @@ import { isValidSuiAddress } from "@mysten/sui.js/utils";
 import { useState } from "react";
 
 import { listCreatedLinks } from "../../utils/zksend";
+import { Div } from "@stylin.js/elements";
+import { P } from "@stylin.js/elements";
 
 const ZkSendList = () => {
   const [address, setAddress] = useState("");
@@ -49,11 +51,10 @@ const ZkSendList = () => {
       <Section
         p="2rem"
         bg="white"
-        gap="1rem"
         display="flex"
-        color={error ? "#900" : "unset"}
         borderRadius="1rem"
         flexDirection="column"
+        color={error ? "#900" : "unset"}
       >
         {isPending
           ? "Loading..."
@@ -63,7 +64,20 @@ const ZkSendList = () => {
           ? "Nothing to show: fill address field"
           : !data.links.length
           ? "Empty list"
-          : JSON.stringify(data.links)}
+          : data.links.map((link, index) => (
+              <Div
+                key={index}
+                display="flex"
+                justifyContent="space-between"
+                borderTop={index && "1px solid"}
+              >
+                <Div>
+                  <P>Balances: {link.assets.balances.length}</P>
+                  <P>NFTs: {link.assets.nfts.length}</P>
+                </Div>
+                <P>{new Date(link.createdAt).toLocaleString()}</P>
+              </Div>
+            ))}
       </Section>
     </Main>
   );
