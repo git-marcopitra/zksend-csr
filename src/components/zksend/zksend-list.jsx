@@ -1,8 +1,11 @@
 import { Input, Label, Section, Main } from "@stylin.js/elements";
 import { useQuery } from "@tanstack/react-query";
-import { listCreatedLinks } from "@mysten/zksend";
 import { isValidSuiAddress } from "@mysten/sui.js/utils";
+import { listCreatedLinks } from "@mysten/zksend";
 import { useState } from "react";
+
+import { Div } from "@stylin.js/elements";
+import { P } from "@stylin.js/elements";
 
 const ZkSendList = () => {
   const [address, setAddress] = useState("");
@@ -17,9 +20,6 @@ const ZkSendList = () => {
       });
     },
   });
-
-
-  console.log({ isPending, error, data });
 
   return (
     <Main display="flex" flexDirection="column" gap="1rem">
@@ -46,11 +46,10 @@ const ZkSendList = () => {
       <Section
         p="2rem"
         bg="white"
-        gap="1rem"
         display="flex"
-        color={error ? '#900' : 'unset'}
         borderRadius="1rem"
         flexDirection="column"
+        color={error ? "#900" : "unset"}
       >
         {isPending
           ? "Loading..."
@@ -60,7 +59,21 @@ const ZkSendList = () => {
           ? "Nothing to show: fill address field"
           : !data.links.length
           ? "Empty list"
-          : JSON.stringify(data.links)}
+          : data.links.map((link, index) => (
+              <Div
+                key={index}
+                color="#000"
+                display="flex"
+                justifyContent="space-between"
+                borderTop={index && "1px solid"}
+              >
+                <Div>
+                  <P>Balances: {link.assets.balances.length}</P>
+                  <P>NFTs: {link.assets.nfts.length}</P>
+                </Div>
+                <P>{new Date(link.createdAt).toLocaleString()}</P>
+              </Div>
+            ))}
       </Section>
     </Main>
   );
