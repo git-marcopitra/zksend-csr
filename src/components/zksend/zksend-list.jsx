@@ -1,8 +1,9 @@
 import { Input, Label, Section, Main } from "@stylin.js/elements";
 import { useQuery } from "@tanstack/react-query";
-import { listCreatedLinks } from "@mysten/zksend";
 import { isValidSuiAddress } from "@mysten/sui.js/utils";
 import { useState } from "react";
+
+import { listCreatedLinks } from "../../utils/zksend";
 
 const ZkSendList = () => {
   const [address, setAddress] = useState("");
