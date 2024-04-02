@@ -1,9 +1,9 @@
 import { Input, Label, Section, Main } from "@stylin.js/elements";
 import { useQuery } from "@tanstack/react-query";
 import { isValidSuiAddress } from "@mysten/sui.js/utils";
+import {       listCreatedLinks} from "@mysten/zksend";
 import { useState } from "react";
 
-import { listCreatedLinks } from "../../utils/zksend";
 import { Div } from "@stylin.js/elements";
 import { P } from "@stylin.js/elements";
 
@@ -18,8 +18,7 @@ const ZkSendList = () => {
       return listCreatedLinks(
         {
           address: address,
-        },
-        window.fetch.bind(window) // HERE IS THE IMPLEMENTATION
+        }
       );
     },
   });

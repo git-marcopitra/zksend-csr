@@ -12,8 +12,8 @@ dependencies:
     specifier: ^0.51.1
     version: 0.51.1(typescript@5.4.3)
   '@mysten/zksend':
-    specifier: ^0.4.1
-    version: 0.4.1(typescript@5.4.3)
+    specifier: ^0.4.2
+    version: 0.4.2(typescript@5.4.3)
   '@stylin.js/elements':
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.2.73)(react@18.2.0)
@@ -815,10 +815,39 @@ packages:
       - typescript
     dev: false
 
+  /@mysten/sui.js@0.51.2(typescript@5.4.3):
+    resolution: {integrity: sha512-RRG/VHhVvkQlWqodFZagRxVDo3SbXh4e3xTBplhPNNyybugbWj/V+wGrNv5/KtxfVxHBw6jTCoB798ijqPBq7g==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.8.1)
+      '@mysten/bcs': 0.11.1
+      '@noble/curves': 1.4.0
+      '@noble/hashes': 1.4.0
+      '@scure/bip32': 1.4.0
+      '@scure/bip39': 1.3.0
+      '@suchipi/femver': 1.0.0
+      bech32: 2.0.0
+      gql.tada: 1.4.1(graphql@16.8.1)(typescript@5.4.3)
+      graphql: 16.8.1
+      superstruct: 1.0.4
+      tweetnacl: 1.0.3
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /@mysten/wallet-standard@0.11.1(typescript@5.4.3):
     resolution: {integrity: sha512-Y0ckhu8u5A0UrNCCq8d7T4q275MT8MfC2J1008rBTIzMjW1SS8uYTAz7eWdebk7NIeEjt+TR/JlUkkbtijb+Ug==}
     dependencies:
       '@mysten/sui.js': 0.51.1(typescript@5.4.3)
+      '@wallet-standard/core': 1.0.3
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
+  /@mysten/wallet-standard@0.11.2(typescript@5.4.3):
+    resolution: {integrity: sha512-wDuXHwmdYS+9ewH6w4Fg67QwDpYN6JTKPWC/fuEWRuHy4uS77DfrIG6KHtU0tReMGapevXovKpw6WoSHJHDDHg==}
+    dependencies:
+      '@mysten/sui.js': 0.51.2(typescript@5.4.3)
       '@wallet-standard/core': 1.0.3
     transitivePeerDependencies:
       - typescript
@@ -829,6 +858,18 @@ packages:
     dependencies:
       '@mysten/sui.js': 0.51.1(typescript@5.4.3)
       '@mysten/wallet-standard': 0.11.1(typescript@5.4.3)
+      mitt: 3.0.1
+      nanostores: 0.9.5
+      valibot: 0.25.0
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
+  /@mysten/zksend@0.4.2(typescript@5.4.3):
+    resolution: {integrity: sha512-kEJ6bHtc1pBSk9aSY4HeQWcoJ9xWzwr1AoFlC/urOYdSWxgknLPhx3RjjReiVclI8olMFkrqUa2y+PWelMC05g==}
+    dependencies:
+      '@mysten/sui.js': 0.51.2(typescript@5.4.3)
+      '@mysten/wallet-standard': 0.11.2(typescript@5.4.3)
       mitt: 3.0.1
       nanostores: 0.9.5
       valibot: 0.25.0
